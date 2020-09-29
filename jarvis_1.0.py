@@ -5,6 +5,7 @@ import psutil
 import pyaudio
 import speech_recognition as sr
 import wikipedia
+import pyautogui
 
 # Init
 engine = pyttsx3.init()
@@ -105,7 +106,11 @@ def username_():
     print(f"Welcome Mister {username}")
     speak("Welcome Mister") 
     speak(username)
-    
+
+def screenshot_():
+    image = pyautogui.screenshot()
+    image.save('C:/VIVEK/1.PYTHON_DEV/project/1.CLG_PROJECT/Personal_assistant/img.png')
+
 # To stop
 def stop():
     print("Thanks for giving me your time")
@@ -177,6 +182,9 @@ if __name__ == "__main__":
             speak("Jarvis 1 point o in your service Mister")
             speak("Jarvis 1 point o in your service Mister") 
             speak(username)
+
+        elif 'screenshot' in query:
+            screenshot_()
 
         elif 'bye' or 'exit' in query:
             stop()
