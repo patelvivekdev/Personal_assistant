@@ -107,6 +107,7 @@ def username_():
     speak("Welcome Mister") 
     speak(username)
 
+# Screenshot
 def screenshot_():
     image = pyautogui.screenshot()
     image.save('C:/VIVEK/1.PYTHON_DEV/project/1.CLG_PROJECT/Personal_assistant/img.png')
