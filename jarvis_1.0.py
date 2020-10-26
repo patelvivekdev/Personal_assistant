@@ -12,55 +12,65 @@ engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty("voice", voices[1].id)
 
-#define assistant name
+# define assistant name
 assistance_name = "Jarvis 1 point o"
 
-#define username
+# define username
 username = ""
 
 # Speak fun
+
+
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-# Time 
+# Time
+
+
 def time_():
     Time = datetime.datetime.now().strftime("%I:%M:%S")
     speak("sir! the current time is:")
-    print("sir! the current time is",Time)
+    print("sir! the current time is", Time)
     speak(Time)
 
 # Date
+
+
 def date_():
     year = datetime.datetime.now().year
     month = datetime.datetime.now().month
     day = datetime.datetime.now().day
-    print("sir! the current date is:" ,day,month,year)
+    print("sir! the current date is:", day, month, year)
     speak("sir! the current date is ")
     speak(day)
     speak(month)
     speak(year)
 
 # CPU & BATTERY
+
+
 def cpu_():
     usage = str(psutil.cpu_percent())
-    print("CPU is at "+ usage)
-    speak("CPU is at "+ usage)
+    print("CPU is at " + usage)
+    speak("CPU is at " + usage)
 
     battery = psutil.sensors_battery()
-    print("Battery is at" , battery.percent)
+    print("Battery is at", battery.percent)
     speak("Battery is at")
     speak(battery.percent)
 
 # Greeting
+
+
 def greeting_():
     flag = False
     hour = datetime.datetime.now().hour
-    if hour >=6 and hour<12:
+    if hour >= 6 and hour < 12:
         print("Good Morning sir !")
         speak("Good Morning sir !")
         flag = True
-    elif hour>=12 and hour < 18:
+    elif hour >= 12 and hour < 18:
         print("Good Afternoon sir !")
         speak("Good Afternoon sir !")
         flag = True
@@ -79,6 +89,8 @@ def greeting_():
         username_()
 
 # TO Take voice command
+
+
 def takecommand_():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -99,25 +111,33 @@ def takecommand_():
     return query
 
 # username
+
+
 def username_():
     speak("What should i call you sir?")
     print("What should i call you sir?")
-    username = takecommand_() 
+    username = takecommand_()
     print(f"Welcome Mister {username}")
-    speak("Welcome Mister") 
+    speak("Welcome Mister")
     speak(username)
 
 # Screenshot
+
+
 def screenshot_():
     image = pyautogui.screenshot()
-    image.save('C:/VIVEK/1.PYTHON_DEV/project/1.CLG_PROJECT/Personal_assistant/img.png')
+    image.save(
+        'C:/VIVEK/1.PYTHON_DEV/project/1.CLG_PROJECT/Personal_assistant/img.png')
 
 # To stop
+
+
 def stop():
     print("Thanks for giving me your time")
     speak("Thanks for giving me your time")
     print("See you soon,sir!")
     speak("See you soon,sir!")
+
 
 if __name__ == "__main__":
 
@@ -134,54 +154,54 @@ if __name__ == "__main__":
 
         elif 'wikipedia' in query:
             speak("Searching.....")
-            query = query.replace('wikipedia','')
-            result = wikipedia.summary(query,sentences=3)
+            query = query.replace('wikipedia', '')
+            result = wikipedia.summary(query, sentences=3)
             speak("Acording to wikipedia")
             print(result)
             speak(result)
 
         elif 'battery' in query:
             cpu_()
-        
+
         elif 'cpu' in query:
             cpu_()
-        
-        elif 'how are you' in query: 
-            print("I am fine, Thank you") 
-            speak("I am fine, Thank you") 
+
+        elif 'how are you' in query:
+            print("I am fine, Thank you")
+            speak("I am fine, Thank you")
             print("How are you, Sir?")
             speak("How are you, Sir?")
             how_r_u = takecommand_()
             if 'fine' in how_r_u or "good" in how_r_u:
-                print("It's good to know that your fine") 
+                print("It's good to know that your fine")
                 speak("It's good to know that your fine")
 
-        elif "change name" in query: 
+        elif "change name" in query:
             print("What would you like to call me, Sir ?")
-            speak("What would you like to call me, Sir ?") 
-            assistance_name = takecommand_() 
+            speak("What would you like to call me, Sir ?")
+            assistance_name = takecommand_()
             speak("Thanks for naming me")
 
-        elif "what's your name" in query or "What is your name" in query: 
-            speak("My friends call me") 
-            speak(assistance_name) 
+        elif "what's your name" in query or "What is your name" in query:
+            speak("My friends call me")
+            speak(assistance_name)
             print("My friends call me", assistance_name)
-        
-        elif "who made you" in query or "who created you" in query:  
+
+        elif "who made you" in query or "who created you" in query:
             print("I have been created by JVS group.")
             speak("I have been created by JVS group.")
-        
+
         elif "who i am" in query:
-            print("If you talk then definately your human.") 
+            print("If you talk then definately your human.")
             speak("If you talk then definately your human.")
 
-        elif 'reason for you' in query: 
+        elif 'reason for you' in query:
             print("I was created as a Minor project by JVS group")
             speak("I was created as a Minor project by JVS group")
-        
-        elif "jarvis" in query:  
+
+        elif "jarvis" in query:
             print("Jarvis 1 point o in your service Mister")
-            speak("Jarvis 1 point o in your service Mister") 
+            speak("Jarvis 1 point o in your service Mister")
             speak(username)
 
         elif 'screenshot' in query:
