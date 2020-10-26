@@ -16,7 +16,7 @@ engine.setProperty("voice", voices[1].id)
 assistance_name = "Jarvis 1 point o"
 
 #define username
-username = "vivek"
+username = ""
 
 # Speak fun
 def speak(audio):
@@ -102,7 +102,7 @@ def takecommand_():
 def username_():
     speak("What should i call you sir?")
     print("What should i call you sir?")
-    #username = takecommand_() 
+    username = takecommand_() 
     print(f"Welcome Mister {username}")
     speak("Welcome Mister") 
     speak(username)
@@ -149,16 +149,16 @@ if __name__ == "__main__":
         elif 'how are you' in query: 
             print("I am fine, Thank you") 
             speak("I am fine, Thank you") 
-            print("How are you, Sir")
-            speak("How are you, Sir")
+            print("How are you, Sir?")
+            speak("How are you, Sir?")
             how_r_u = takecommand_()
             if 'fine' in how_r_u or "good" in how_r_u:
                 print("It's good to know that your fine") 
                 speak("It's good to know that your fine")
 
         elif "change name" in query: 
-            print("What would you like to call me, Sir ")
-            speak("What would you like to call me, Sir ") 
+            print("What would you like to call me, Sir ?")
+            speak("What would you like to call me, Sir ?") 
             assistance_name = takecommand_() 
             speak("Thanks for naming me")
 
@@ -176,11 +176,11 @@ if __name__ == "__main__":
             speak("If you talk then definately your human.")
 
         elif 'reason for you' in query: 
-            speak("I was created as a Minor project by JVS group")
+            print("I was created as a Minor project by JVS group")
             speak("I was created as a Minor project by JVS group")
         
         elif "jarvis" in query:  
-            speak("Jarvis 1 point o in your service Mister")
+            print("Jarvis 1 point o in your service Mister")
             speak("Jarvis 1 point o in your service Mister") 
             speak(username)
 
