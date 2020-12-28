@@ -1,0 +1,7 @@
+pyttsx3
+speechRecognition
+pyaudio
+wikipedia
+opencv-python
+tensorflow
+numpy

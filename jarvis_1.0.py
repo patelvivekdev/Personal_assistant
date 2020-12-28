@@ -6,6 +6,8 @@ import pyaudio
 import speech_recognition as sr
 import wikipedia
 import pyautogui
+from face_recognition import create_model
+from face_recognition import predict_persion
 
 # Init
 engine = pyttsx3.init()
@@ -19,15 +21,11 @@ assistance_name = "Jarvis 1 point o"
 username = ""
 
 # Speak fun
-
-
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
 # Time
-
-
 def time_():
     Time = datetime.datetime.now().strftime("%I:%M:%S")
     speak("sir! the current time is:")
@@ -35,8 +33,6 @@ def time_():
     speak(Time)
 
 # Date
-
-
 def date_():
     year = datetime.datetime.now().year
     month = datetime.datetime.now().month
@@ -48,8 +44,6 @@ def date_():
     speak(year)
 
 # CPU & BATTERY
-
-
 def cpu_():
     usage = str(psutil.cpu_percent())
     print("CPU is at " + usage)
@@ -61,9 +55,8 @@ def cpu_():
     speak(battery.percent)
 
 # Greeting
-
-
 def greeting_():
+    user_()
     flag = False
     hour = datetime.datetime.now().hour
     if hour >= 6 and hour < 12:
@@ -86,11 +79,8 @@ def greeting_():
         print("checking functionality")
         speak("checking functionality")
         cpu_()
-        username_()
 
 # TO Take voice command
-
-
 def takecommand_():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -111,27 +101,22 @@ def takecommand_():
     return query
 
 # username
-
-
-def username_():
-    speak("What should i call you sir?")
-    print("What should i call you sir?")
-    username = takecommand_()
+def user_():
+    speak("Face recognition start, Please look at camera")
+    print("Face recognition start, Please look at camera")
+    model = create_model()
+    username = predict_persion(model=model)
     print(f"Welcome Mister {username}")
     speak("Welcome Mister")
     speak(username)
 
 # Screenshot
-
-
 def screenshot_():
     image = pyautogui.screenshot()
     image.save(
         'C:/VIVEK/1.PYTHON_DEV/project/1.CLG_PROJECT/Personal_assistant/img.png')
 
 # To stop
-
-
 def stop():
     print("Thanks for giving me your time")
     speak("Thanks for giving me your time")
