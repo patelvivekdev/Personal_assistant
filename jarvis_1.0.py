@@ -203,6 +203,6 @@ if __name__ == "__main__":
                     speak("I was created as a Minor project by JVS group")
                 if 'screenshot' in query:
                     screenshot_()
-                if 'bye' or 'exit' or 'stop' in query:
+                if 'stop' in query:
                     stop()
                     break
