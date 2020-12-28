@@ -192,6 +192,6 @@ if __name__ == "__main__":
         elif 'screenshot' in query:
             screenshot_()
 
-        elif 'bye' or 'exit' in query:
+        elif 'bye' or 'exit' or 'stop' in query:
             stop()
             quit()
