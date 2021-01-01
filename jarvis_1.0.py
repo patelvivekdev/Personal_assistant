@@ -6,8 +6,6 @@ import pyaudio
 import speech_recognition as sr
 import wikipedia
 import pyautogui
-from face_recognition import create_model
-from face_recognition import predict_persion
 
 # Init
 engine = pyttsx3.init()
