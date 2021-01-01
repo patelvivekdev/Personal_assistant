@@ -21,19 +21,19 @@ assistance_name = "Jarvis 1 point o"
 # define username
 username = ""
 
-# Speak fun
+
 def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-# Time
+
 def time_():
     Time = datetime.datetime.now().strftime("%I:%M:%S")
     speak("sir! the current time is:")
     print("sir! the current time is", Time)
     speak(Time)
 
-# Date
+
 def date_():
     year = datetime.datetime.now().year
     month = datetime.datetime.now().month
@@ -44,7 +44,7 @@ def date_():
     speak(month)
     speak(year)
 
-# CPU & BATTERY
+
 def cpu_():
     usage = str(psutil.cpu_percent())
     print("CPU is at " + usage)
@@ -55,7 +55,7 @@ def cpu_():
     speak("Battery is at")
     speak(battery.percent)
 
-# Greeting
+
 def greeting_():
     speak("Jarvis 1 point o in your service Mister")
     print("Jarvis 1 point o in your service Mister")
@@ -83,7 +83,7 @@ def greeting_():
         speak("checking functionality")
         cpu_()
 
-# TO Take voice command
+
 def takecommand_():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -103,6 +103,7 @@ def takecommand_():
 
     return query
 
+
 def startcommand_():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -111,11 +112,11 @@ def startcommand_():
 
     try:
         query = r.recognize_google(audio, language="en-US")
-    
+
     except Exception as e:
         print(e)
         return "None"
-    
+
     return query
 
 
@@ -126,18 +127,22 @@ def user_():
     model = create_model()
     speak("Face recognition start, Please look at camera")
     print("Face recognition start, Please look at camera")
-    username = predict_persion(model=model)
+    user = predict_persion(model=model)
+    if 'vivek' in user:
+        username = 'vivek'
+    elif 'smit' in user:
+        username = 'smit'
     speak("Welcome mister")
     speak(username)
     print(f"Welcome mister {username}")
 
-# Screenshot
+
 def screenshot_():
     image = pyautogui.screenshot()
     image.save(
         'C:/VIVEK/1.PYTHON_DEV/project/1.CLG_PROJECT/Personal_assistant/img.png')
 
-# To stop
+
 def stop():
     print("Thanks for giving me your time")
     speak("Thanks for giving me your time")
@@ -159,7 +164,7 @@ if __name__ == "__main__":
 
             while True:
                 query = takecommand_().lower()
-                        
+
                 if 'time' in query:
                     time_()
                 if 'date' in query:
@@ -206,4 +211,4 @@ if __name__ == "__main__":
                     screenshot_()
                 if 'stop' in query:
                     stop()
-                    break
+                    exit()

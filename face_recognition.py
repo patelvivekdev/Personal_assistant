@@ -177,10 +177,10 @@ def predict_persion(model):
                         pass
                 cv2.imshow("img", img)
                 if "vivek" in final_name:
-                    print("welcome vivek")
+                    final_name = 'vivek'
                     break
                 if "smit" in final_name:
-                    print("welcome smit")
+                    final_name - 'smit'
                     break
                 if cv2.waitKey(1) == 13:  # 13 is the Enter Key
                     break
