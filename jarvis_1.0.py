@@ -7,6 +7,9 @@ import speech_recognition as sr
 import wikipedia
 import pyautogui
 
+# Import Custom files
+from Face_Recognition import create_model, predict_persion
+
 # Init
 engine = pyttsx3.init()
 voices = engine.getProperty("voices")
