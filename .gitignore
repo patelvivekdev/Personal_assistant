@@ -3,3 +3,5 @@ model.h5
 /__pycache__/
 /.vscode/
 .vscode/settings.json
+/group_of_faces
+/model

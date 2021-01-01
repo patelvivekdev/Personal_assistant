@@ -5,3 +5,4 @@ wikipedia
 opencv-python
 tensorflow
 numpy
+autopep8
