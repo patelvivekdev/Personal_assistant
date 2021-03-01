@@ -8,7 +8,7 @@ import wikipedia
 import pyautogui
 
 # Import Custom files
-from Face_Recognition import create_model, predict_persion
+from Face_Recognition import create_model, predict_person
 
 # Init
 engine = pyttsx3.init()
@@ -127,7 +127,7 @@ def user_():
     model = create_model()
     speak("Face recognition start, Please look at camera")
     print("Face recognition start, Please look at camera")
-    user = predict_persion(model=model)
+    user = predict_person(model=model)
     if 'vivek' in user:
         username = 'vivek'
     elif 'smit' in user:
