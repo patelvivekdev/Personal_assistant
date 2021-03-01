@@ -4,19 +4,12 @@ import cv2
 import tensorflow as tf
 import numpy as np
 import pandas as pd
-from PIL import Image
-from tensorflow import keras
-from keras.models import load_model
-from keras.preprocessing.image import load_img, save_img, img_to_array
-from keras.applications.imagenet_utils import preprocess_input
-from keras.preprocessing import image
-
 # Load Model
 
 
 def create_model():
     """Load Model with keras load_model function."""
-    model = load_model("./model/model.h5")
+    model = tf.keras.models.load_model("./model/model.h5")
     print("Model Loaded...")
 
     return model
@@ -141,7 +134,8 @@ def predict_person(model):
                             detected_face = cv2.resize(
                                 detected_face, (224, 224)
                             )  # resize to 224x224
-                            img_pixels = image.img_to_array(detected_face)
+                            img_pixels = tf.keras.preprocessing.image.img_to_array(
+                                detected_face)
                             img_pixels = np.expand_dims(img_pixels, axis=0)
                             img_pixels /= 255
                             captured_representation = model.predict(img_pixels)[
@@ -180,7 +174,7 @@ def predict_person(model):
                     final_name = 'vivek'
                     break
                 if "smit" in final_name:
-                    final_name - 'smit'
+                    final_name = 'smit'
                     break
                 if cv2.waitKey(1) == 13:  # 13 is the Enter Key
                     break
